@@ -1,0 +1,200 @@
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #1a1a1a;
+    --tile-border: #ccc;
+    --key-bg: #d3d6da;
+    --key-text: #1a1a1a;
+    --correct-bg: #6aaa64;
+    --present-bg: #c9b458;
+    --absent-bg: #787c7e;
+}
+
+.dark-theme {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --tile-border: #3a3a3c;
+    --key-bg: #818384;
+    --key-text: #f0f0f0;
+    --correct-bg: #538d4e;
+    --present-bg: #b59f3b;
+    --absent-bg: #3a3a3c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.game-container {
+    text-align: center;
+}
+
+.header {
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    color: var(--text-color);
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+}
+
+#theme-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+
+#stats {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--key-bg);
+    color: var(--key-text);
+    font-weight: bold;
+    padding: 10px;
+    border: 2px solid var(--tile-border);
+}
+
+#stats p {
+    margin: 0;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+    margin-bottom: 20px;
+}
+
+.tile {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--tile-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tile-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.tile.flip .tile-inner {
+    transform: rotateX(180deg);
+}
+
+.tile-front,
+.tile-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile-back {
+    transform: rotateX(180deg);
+}
+
+.correct .tile-back {
+    background-color: var(--correct-bg);
+    color: white;
+}
+
+.present .tile-back {
+    background-color: var(--present-bg);
+    color: white;
+}
+
+.absent .tile-back {
+    background-color: var(--absent-bg);
+    color: white;
+}
+
+#keyboard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 5px;
+    margin-bottom: 20px;
+}
+
+.key {
+    padding: 10px;
+    border: none;
+    background-color: var(--key-bg);
+    color: var(--key-text);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.correct {
+    background-color: var(--correct-bg);
+    color: white;
+}
+
+.present {
+    background-color: var(--present-bg);
+    color: white;
+}
+
+.absent {
+    background-color: var(--absent-bg);
+    color: white;
+}
+
+#new-game-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: var(--key-bg);
+    color: var(--key-text);
+    border: 2px solid var(--tile-border);
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#new-game-btn:hover {
+    background-color: var(--correct-bg);
+    color: white;
+}
