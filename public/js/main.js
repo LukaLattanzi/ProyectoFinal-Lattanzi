@@ -46,7 +46,7 @@ function updateStatsDisplay() {
 // Carga las palabras desde un archivo JSON
 async function cargarPalabras() {
     try {
-        const respuesta = await fetch('../data/wordlist.json');
+        const respuesta = await fetch('./data/wordlist.json');
         if (!respuesta.ok) throw new Error('Error al cargar palabras');
         const data = await respuesta.json();
         words = data;
