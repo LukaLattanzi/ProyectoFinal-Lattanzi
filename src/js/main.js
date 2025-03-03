@@ -1,7 +1,7 @@
 let words = [];
 let targetWord = "";
 let currentGuess = [];
-let userGuesses = []; // Nuevo array para almacenar intentos
+let userGuesses = [];
 let guessCount = 0;
 let gamesPlayed = 0;
 let points = 0;
@@ -65,12 +65,19 @@ function initializeGame() {
         board.appendChild(tile);
     }
 
-    "QWERTYUIOPASDFGHJKLZXCVBNM".split("").forEach(letter => {
-        const key = document.createElement("button");
-        key.textContent = letter;
-        key.classList.add("key");
-        key.addEventListener("click", () => handleKeyPress(letter));
-        keyboard.appendChild(key);
+    // Generar teclado en filas
+    const keyboardRows = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
+    keyboardRows.forEach(row => {
+        const rowContainer = document.createElement("div");
+        rowContainer.classList.add("keyboard-row");
+        row.split("").forEach(letter => {
+            const key = document.createElement("button");
+            key.textContent = letter;
+            key.classList.add("key");
+            key.addEventListener("click", () => handleKeyPress(letter));
+            rowContainer.appendChild(key);
+        });
+        keyboard.appendChild(rowContainer);
     });
 
     gamesPlayed++;
@@ -153,10 +160,9 @@ function updateBoard() {
 function checkGuess() {
     const guess = currentGuess.join("");
     userGuesses.push([...currentGuess]); // Guardar intento
-    
+
     const tiles = board.getElementsByClassName("tile");
     const startIndex = guessCount * 5;
-    let correctCount = 0;
 
     const targetLetters = targetWord.split('');
     const frequency = {};
@@ -184,10 +190,11 @@ function checkGuess() {
         }
     }
 
-    // Aplicar estilos
+    // Aplicar estilos a las celdas y actualizar teclas
     for (let i = 0; i < 5; i++) {
         const tile = tiles[startIndex + i];
-        const key = Array.from(keyboard.children).find(k => k.textContent === guess[i]);
+        // Buscar la tecla correspondiente entre todos los botones de teclado
+        const key = Array.from(document.querySelectorAll('#keyboard button.key')).find(k => k.textContent === guess[i]);
 
         setTimeout(() => {
             tile.classList.add(statuses[i]);

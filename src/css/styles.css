@@ -29,12 +29,12 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    font-family: Arial, sans-serif;
     background-color: var(--bg-color); /* Usar variable de color de fondo */
     color: var(--text-color); /* Usar variable de color de texto */
     transition: background-color 0.3s, color 0.3s; /* Transición suave para cambios de tema */
@@ -53,15 +53,15 @@ h1 {
 }
 
 #theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 5px;
     color: var(--text-color); /* Usar variable de color de texto */
     transition: background-color 0.3s; /* Transición suave para cambios de tema */
-    position: absolute;
-    top: 10px;
-    right: 10px;
 }
 
 #theme-toggle svg {
@@ -78,16 +78,16 @@ h1 {
 }
 
 #stats {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 1em;
-    width: 20rem;
     display: flex;
     justify-content: space-around;
+    width: 20rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 1em;
+    font-weight: bold;
     background-color: var(--key-bg); /* Usar variable de color de fondo de tecla */
     color: var(--key-text); /* Usar variable de color de texto de tecla */
-    font-weight: bold;
-    padding: 10px;
     border: 2px solid var(--tile-border); /* Usar variable de color de borde de casilla */
 }
 
@@ -122,17 +122,17 @@ h1 {
 
 /* Cuadrados individuales */
 .tile {
-    width: 50px; /* Ancho del cuadrado */
-    height: 50px; /* Alto del cuadrado */
-    border: 2px solid var(--tile-border); /* Usar variable de color de borde de casilla */
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 50px; /* Ancho del cuadrado */
+    height: 50px; /* Alto del cuadrado */
     font-size: 1.5em;
     font-weight: bold;
     text-transform: uppercase;
     background-color: var(--bg-color); /* Usar variable de color de fondo */
     color: var(--text-color); /* Usar variable de color de texto */
+    border: 2px solid var(--tile-border); /* Usar variable de color de borde de casilla */
 }
 
 /* Contenedor interno del cuadrado */
@@ -153,14 +153,15 @@ h1 {
 .tile-front,
 .tile-back {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
+
 .tile-back {
     transform: rotateX(180deg); /* Girar la cara trasera */
 }
@@ -180,45 +181,39 @@ h1 {
     color: white;
 }
 
-/* Centrar el teclado */
+/* Contenedor del teclado */
 #keyboard-container {
     display: flex;
     justify-content: center;
     margin: 20px 0;
 }
 
+/* Nuevo estilo para el contenedor del teclado usando flex en columna */
 #keyboard {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin: 0 auto;
 }
 
-/* Ajustar la última fila del teclado */
-#keyboard {
-    grid-template-areas:
-        "q w e r t y u i o p"
-        "a s d f g h j k l ."
-        "z x c v b n m . . .";
-}
-
-#keyboard .key:nth-child(21) {
-    grid-column: span 2; /* Ajustar la tecla "Enter" si la tienes */
-}
-
-/* Asegurar que el teclado esté centrado */
-#keyboard {
+/* Cada fila del teclado */
+.keyboard-row {
+    display: flex;
     justify-content: center;
+    gap: 5px;
 }
 
+/* Estilos para las teclas */
 .key {
     padding: 10px;
     border: none;
-    background-color: var(--key-bg); /* Usar variable de color de fondo de tecla */
-    color: var(--key-text); /* Usar variable de color de texto de tecla */
+    background-color: var(--key-bg);
+    color: var(--key-text);
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
-    transition: background-color 0.3s, color 0.3s; /* Transición suave para cambios de color */
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .correct {
