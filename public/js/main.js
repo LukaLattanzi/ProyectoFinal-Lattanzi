@@ -16,21 +16,21 @@ const gamesPlayedElement = document.getElementById("games-played");
 const pointsElement = document.getElementById("points");
 const deletePointsBtn = document.getElementById("delete-points-btn");
 
-// Retorna la configuracion de colores para SweetAlert2 segun el tema actual
+// Retorna la configuración de colores para SweetAlert2 según el tema actual
 function getSwalThemeConfig() {
     return document.body.classList.contains("dark-theme")
         ? { background: "#1a1a1a", color: "#f0f0f0" }
         : { background: "#f0f0f0", color: "#1a1a1a" };
 }
 
-// Carga las estadisticas del juego desde el localStorage
+// Carga las estadísticas del juego desde el localStorage
 function loadGameStats() {
     gamesPlayed = Number.parseInt(localStorage.getItem("gamesPlayed")) || 0;
     points = Number.parseInt(localStorage.getItem("points")) || 0;
     updateStatsDisplay();
 }
 
-// Guarda las estadisticas del juego en el localStorage
+// Guarda las estadísticas del juego en el localStorage
 function saveGameStats() {
     localStorage.setItem("gamesPlayed", gamesPlayed);
     localStorage.setItem("points", points);
@@ -92,17 +92,34 @@ function initializeGame() {
         board.appendChild(tile);
     }
 
-    // Generar teclado en filas (QWERTY)
-    const keyboardRows = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
+    // Generar teclado en filas (QWERTY) con botones especiales
+    const keyboardRows = ["QWERTYUIOP", "ASDFGHJKL", "⌫ZXCVBNM↵"];
     keyboardRows.forEach(row => {
         const rowContainer = document.createElement("div");
         rowContainer.classList.add("keyboard-row");
         row.split("").forEach(letter => {
-            const key = document.createElement("button");
-            key.textContent = letter;
-            key.classList.add("key");
-            key.addEventListener("click", () => handleKeyPress(letter));
-            rowContainer.appendChild(key);
+            if (letter === "↵") {
+                // Botón ENTER
+                const enterKey = document.createElement("button");
+                enterKey.textContent = "ENTER";
+                enterKey.classList.add("key", "special-key");
+                enterKey.addEventListener("click", handleEnter);
+                rowContainer.appendChild(enterKey);
+            } else if (letter === "⌫") {
+                // Botón BORRAR
+                const backspaceKey = document.createElement("button");
+                backspaceKey.innerHTML = "⌫";
+                backspaceKey.classList.add("key", "special-key");
+                backspaceKey.addEventListener("click", handleBackspace);
+                rowContainer.appendChild(backspaceKey);
+            } else {
+                // Letras normales
+                const key = document.createElement("button");
+                key.textContent = letter;
+                key.classList.add("key");
+                key.addEventListener("click", () => handleKeyPress(letter));
+                rowContainer.appendChild(key);
+            }
         });
         keyboard.appendChild(rowContainer);
     });

@@ -216,6 +216,26 @@ h1 {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.special-key {
+    flex: 1.5;
+    min-width: 60px;
+    font-size: 0.8em;
+    padding: 8px;
+}
+
+@media (max-width: 480px) {
+    .key {
+        font-size: 0.9em;
+        padding: 8px;
+        min-width: 28px;
+    }
+    
+    .special-key {
+        min-width: 50px;
+        font-size: 0.7em;
+    }
+}
+
 .correct {
     background-color: var(--correct-bg);
     color: white;
