@@ -3,7 +3,7 @@
 ¡Un clásico Wordle con sabor a medialunas y mate! Adivina la palabra oculta relacionada con modismos, costumbres y cultura argentina en 6 intentos.  
 **Inspirado en el proyecto [Boludle](https://github.com/sjaquemate/boludle) 🏆 - ¡Todos los créditos a sus creadores por la idea original!**
 
-[![Deploy en Netlify](https://img.shields.io/badge/Deploy-Netlify-00C7B7?style=for-the-badge&logo=netlify)](https://tuwordleargentino.netlify.app)
+[![Deploy en Netlify](https://img.shields.io/badge/Deploy-Netlify-00C7B7?style=for-the-badge&logo=netlify)](https://wordleargentino.netlify.app)
 
 https://wordleargentino.netlify.app
 
