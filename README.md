@@ -26,21 +26,6 @@ Este proyecto reinventa el popular **Wordle** con una sazón bien argentina. En 
 
 ---
 
-## 📁 Estructura del Proyecto
-
-/
-└── public/
-    ├── css/
-    │   └── styles.css        # Estilos principales del juego
-    ├── data/
-    │   └── wordlist.json     # Diccionario de palabras argentinas
-    ├── js/
-    │   └── main.js           # Lógica del juego y funcionalidades
-    ├── index.html            # Punto de entrada de la aplicación
-    └── .gitattributes        # Configuración para manejo de archivos en Git
-
----
-
 ## 🎮 Cómo Jugar
 
 1. Ingresa una palabra de **5 letras**.
@@ -48,7 +33,7 @@ Este proyecto reinventa el popular **Wordle** con una sazón bien argentina. En 
    - 🟩 Letra correcta en posición correcta
    - 🟨 Letra correcta en posición equivocada
    - ⬛ Letra no incluida en la palabra
-3. ¡Descubre la palabra argentina antes de agotar tus 6 intentos!
+3. ¡Descubre la palabra antes de agotar tus 6 intentos!
 
 ---
 
@@ -56,9 +41,10 @@ Este proyecto reinventa el popular **Wordle** con una sazón bien argentina. En 
 
 - **Diseño responsive** (funciona en móviles y desktop)
 - **Teclado virtual interactivo**
-- **Estadísticas de juego** (victorias/derrotas)
-- **Modo oscuro/claro** (según preferencia del sistema)
-
+- **Estadísticas** guardadas en `localStorage`
+- **Modo oscuro/claro**
+- **Integración con biblioteca de iconos** [Bootstrap Icons](https://icons.getbootstrap.com)
+- **Integración con biblioteca JavaScript** [Sweet Alert2](https://sweetalert2.github.io)
 ---
 
 ## 🛠 Tecnologías
